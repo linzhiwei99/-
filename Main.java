@@ -19,27 +19,32 @@ import com.amazonaws.services.s3.model.InitiateMultipartUploadRequest;
 import com.amazonaws.services.s3.model.PartETag;
 import com.amazonaws.services.s3.model.UploadPartRequest;
 public class Main {
+	private static String Bucket_name="";
 	private final static String accessKey = "DE6EEA2A384A7A79314D";
 	private final static String secretKey = "WzhDMEIyMjlDRURFOUYwNDRBQ0ZGMEJGQTczMzkyN0VDQzEwNkVFRkRd";
 	private final static String serviceEndpoint = 
 			"http://scuts3.depts.bingosoft.net:29999";
 	private static long partSize = 5 << 20;
+	private static String fileName;
 	private final static String signingRegion = "";
-	public static void main(String[] args) {
+	public static String getBucketName() {
+		return Bucket_name;
+	}
+	
+	public static void main(String[] args) throws Exception {
 		//第一次先对文件进行同步
 		
 			//提醒输入目录名和Bucketname
-//			System.out.print("请输入目录名和Bucket_name:");
-//			System.out.print("目录名:");
+			System.out.print("请输入目录名和Bucket_name:");
+			System.out.print("目录名:");
 			//输入目录名和Bucketname
-			//Scanner sc = new Scanner(System.in);
-			//String file_name = sc.nextLine();
-			String file_name="D:\\file_test\\";
-//			System.out.print("Bucket_name:");
-			String Bucket_name="linzhiwei";
-			//String Bucket_name = sc.nextLine();
+			Scanner sc = new Scanner(System.in);
+			String file_name = sc.nextLine();
+			System.out.print("Bucket_name:");
+			Bucket_name = sc.nextLine();
 			//对目录名字符串处理
-			
+			System.out.println("开始传输");
+
 			//上传文件
 			ArrayList<String> listFileName = new ArrayList<String>(); 
 			getAllFileName(file_name,listFileName);
@@ -47,7 +52,7 @@ public class Main {
 				 System.out.println(name);
 				 final File file = new File(name);
 				 System.out.println(file.length());
-				 if(file.length()>50000)
+				 if(file.length()>20971520)
 				 {
 					 upload_large(name,Bucket_name);
 					 }
@@ -55,6 +60,10 @@ public class Main {
 					 upload_small(name,Bucket_name);
 				 }
 				 }
+			 ReYoFileMonitor m = new ReYoFileMonitor(1000);
+		     m.monitor("D:\\file_test", new ReYoFileListener());
+		     m.start();
+		     
 			 }
 		
 		
@@ -84,7 +93,7 @@ public class Main {
 
 	
 	//传输20M以上文件到S3的函数
-	private static void upload_large(String filePath,String bucketName ) {
+	static void upload_large(String filePath,String bucketName ) {
 		final BasicAWSCredentials credentials = 
 				new BasicAWSCredentials(accessKey,secretKey);
 				final ClientConfiguration ccfg = new ClientConfiguration().
@@ -177,7 +186,7 @@ public class Main {
         System.out.format("Uploading %s to S3 bucket %s...\n", filePath, bucketName);
         final String keyName = Paths.get(filePath).getFileName().toString();
         final File file = new File(filePath);
-
+       
         for (int i = 0; i < 2; i++) {
             try {
                 s3.putObject(bucketName, keyName, file);
@@ -208,7 +217,26 @@ public class Main {
         }
 
         System.out.println("Done!");
+        
     }
+	//删除文件的函数
+	public static void deleteFile(String BucketName,String fileName) {
+		
+		final BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+        final ClientConfiguration ccfg = new ClientConfiguration().
+                withUseExpectContinue(false);
+
+        final EndpointConfiguration endpoint = new EndpointConfiguration(serviceEndpoint, signingRegion);
+
+        final AmazonS3 s3 = AmazonS3ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withClientConfiguration(ccfg)
+                .withEndpointConfiguration(endpoint)
+                .withPathStyleAccessEnabled(true)
+                .build();
+        s3.deleteObject(BucketName,fileName);
+        System.out.println("done");
+	}
 	}
 	
 	

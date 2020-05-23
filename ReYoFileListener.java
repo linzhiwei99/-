@@ -5,13 +5,7 @@ import java.io.File;
 import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationObserver;
  
-/**
-* <B>创  建 人：</B>AdministratorReyoAut <BR>
-* <B>创建时间：</B>2017年12月23日 下午9:25:21<BR>
-*
-* @author ReYo
-* @version 1.0
-*/
+
 public class ReYoFileListener implements FileAlterationListener {
  
     ReYoFileMonitor monitor = null;
@@ -66,9 +60,9 @@ public class ReYoFileListener implements FileAlterationListener {
     public void onFileDelete(File file) {
 //    	if(!file.getName())
         System.out.println("onFileDelete :" + file.getName());
-        
-        a.deleteFile(file.getName());
-    
+        System.out.println("bucketName:"+Main.getBucketName());
+        Main.deleteFile(Main.getBucketName(),file.getName());
+        System.out.println(file.getName());
     }
  
     @Override

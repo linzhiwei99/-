@@ -6,13 +6,6 @@ import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
 import org.apache.commons.io.monitor.FileAlterationObserver;
  
-/**
-* <B>创  建 人：</B>AdministratorReyoAut <BR>
-* <B>创建时间：</B>2017年12月23日 下午9:26:08<BR>
-*
-* @author ReYo
-* @version 1.0
-*/
 public class ReYoFileMonitor {
  
     FileAlterationMonitor monitor = null;
