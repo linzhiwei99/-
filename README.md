@@ -64,3 +64,7 @@ IDEA里面对代码的格式有要求的、
 今日在拓展2遇到了问题，咨询了老师，在解题思路上得转变，流数据是不断一直产生的，没有边界的，所以都会有时间窗口做统计，就是有数据的范围，如最近半小时的城市人数，最近一天的城市游客数。
 然后可以充分利用DataStream提供的API，完成聚合等计算，就不用自行实现如判断城市是否存在的方法。https://ci.apache.org/projects/flink/flink-docs-release-1.10/dev/datastream_api.html
 
+6月3号
+今天完成了拓展二和拓展一，参考了官方文档对时间窗口的描述，还有官方文档的迭代函数的描写
+https://ci.apache.org/projects/flink/flink-docs-release-1.10/dev/datastream_api.html
+
