@@ -75,3 +75,11 @@ https://ci.apache.org/projects/flink/flink-docs-release-1.10/dev/datastream_api.
 6月5号
 今天跟队友分配的任务，然后在网上查了资料，准备明天实现
 
+6月8号
+今天进行了新的实操的联系，对之前flink的进行了进一步的学习，学习了processAllWindowsFunction()和processWindows()
+对实时计算时，我们是无法得到最后一条记录的，我们应该定义时间窗口或者时间窗口，然后对窗口内的数据进行处理
+
+6月9号
+今天进行了新的实操的练习，遇到了问题，但是还没解决
+就是配置完环境后，找不到相应的文件目录，显示不存在
+这个问题智能留待明天解决
