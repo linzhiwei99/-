@@ -88,3 +88,7 @@ https://ci.apache.org/projects/flink/flink-docs-release-1.10/dev/datastream_api.
 原来用python的时候缺少一些包，改为python3又会显示找不到文件或者目录
 用了其他同学的倒是解决了这个问题
 觉得挺奇怪的
+
+6月11号
+今天完成了本次实时计算的大作业，不算困难，创建好消息的生产者和消费者，主要的逻辑部分体现在如何对消息流进行分类
+这部分需要定义一个滚动窗口，在processAllWindows函数里面对每个窗口的所有数据进行处理，然后在存到S3中
