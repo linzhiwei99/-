@@ -92,3 +92,6 @@ https://ci.apache.org/projects/flink/flink-docs-release-1.10/dev/datastream_api.
 6月11号
 今天完成了本次实时计算的大作业，不算困难，创建好消息的生产者和消费者，主要的逻辑部分体现在如何对消息流进行分类
 这部分需要定义一个滚动窗口，在processAllWindows函数里面对每个窗口的所有数据进行处理，然后在存到S3中
+
+6月12号
+今天写完了流程图和说明书，并新建了一个仓库，将他们存放好，算是完成了所有的任务
