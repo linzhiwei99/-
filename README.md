@@ -95,3 +95,10 @@ https://ci.apache.org/projects/flink/flink-docs-release-1.10/dev/datastream_api.
 
 6月12号
 今天写完了流程图和说明书，并新建了一个仓库，将他们存放好，算是完成了所有的任务
+
+6月15号N
+今天在做实操的时候出现了两个问题，第一，在上传文件时出现了以下的错误:not such a file or directory 上网发现是配置时没有在web后需要加/
+第二，解决了第一个问题时，将文件上传时发现连接不到远端的环境，查了以后需要把所有的SFTP和interpurer删掉
+
+6月16号
+今天完成了新的实操的学习，老师用生动的大禹治水的例子来比喻数据治理，在实操的过程中没有遇到问题，不过激活不了Nactive，但是可以使用
